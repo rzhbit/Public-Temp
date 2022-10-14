@@ -803,6 +803,8 @@ install_v2ray() {
 	else
 		pushd /tmp
 		git clone https://github.com/233boy/v2ray -b "$_gitbranch" /etc/v2ray/233boy/v2ray --depth=1
+		perl -p -i -e "s/v2.6.1/v2.6.2/g" /etc/v2ray/233boy/v2ray/src/download-caddy.sh /etc/v2ray/233boy/v2ray/src/download-caddy.sh
+		echo "v2.6.2 error"
 		popd
 
 	fi
