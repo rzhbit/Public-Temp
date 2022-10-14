@@ -114,11 +114,10 @@ cat <<END >/etc/shadowsocks-libev/config.json
     "password":"$password",
     "method":"$encrypt_method",
     "timeout": 600,
-    "fast-open": true,
     "no_delay": true,
     "mode": "tcp_only",
     "plugin": "/usr/bin/v2ray-plugin",
-    "plugin_opts": "server;tls;host=$domain;path=/v2ray;fast-open;loglevel=none;cert=/root/.acme.sh/$domain/fullchain.cer;key=/root/.acme.sh/$domain/$domain.key"
+    "plugin_opts": "server;tls;host=$domain;path=/ue1cdh3vrpuj;loglevel=none;cert=/root/.acme.sh/$domain/fullchain.cer;key=/root/.acme.sh/$domain/$domain.key"
 }
 END
 
@@ -149,5 +148,5 @@ echo "password is $password" | tee -a ss_install.log
 echo "method is $encrypt_method" | tee -a ss_install.log
 echo "domain is $domain" | tee -a ss_install.log
 echo "plugin is 'v2ray-plugin_windows_amd64'"
-echo "plugin-opts is 'tls;host=$domain;path=/v2ray;fast-open'" | tee -a ss_install.log
+echo "plugin-opts is 'tls;host=$domain;path=/ue1cdh3vrpuj;'" | tee -a ss_install.log
 
