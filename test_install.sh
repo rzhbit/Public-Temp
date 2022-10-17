@@ -78,17 +78,17 @@ if [ "$only_config" != true ]; then
         #enable ufw
         sudo ufw allow 80
         sudo ufw allow 443
-        sudo ufw allow $server_port
+        #sudo ufw allow $server_port
         sudo ufw status
         
         #install apache2
         apt update
-        apt-get install apache2 -y
+        apt-get install nginx -y
         
         #get CA
         curl  https://get.acme.sh | sh
         ./.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
-        ./.acme.sh/acme.sh --issue  -d $domain --apache --force
+        ./.acme.sh/acme.sh --issue  -d $domain --nginx --force
 
         #install shadowsocks-libev
         apt install shadowsocks-libev -y
