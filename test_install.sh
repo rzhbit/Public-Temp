@@ -107,7 +107,7 @@ echo "----#edit config----"
 #config.json
 cat <<END >/etc/shadowsocks-libev/config.json
 {
-    "server":"0.0.0.0",
+    "server":["[::0]","0.0.0.0"], 
     "nameserver": "8.8.8.8",
     "server_port":$server_port,
     "local_port":1080,
