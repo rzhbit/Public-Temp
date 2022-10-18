@@ -78,7 +78,6 @@ if [ "$only_config" != true ]; then
         #enable ufw
         sudo ufw allow 80
         sudo ufw allow 443
-        sudo ufw allow $server_port
         sudo ufw status
         
         #install apache2
@@ -104,6 +103,7 @@ fi
 
 #----------------------
 echo "----#edit config----"
+sudo ufw allow $server_port
 #config.json
 cat <<END >/etc/shadowsocks-libev/config.json
 {
