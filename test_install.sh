@@ -107,7 +107,7 @@ echo "----#edit config----"
 #config.json
 cat <<END >/etc/shadowsocks-libev/config.json
 {
-    "server":["[::0]","0.0.0.0"], 
+    "server": "0.0.0.0", 
     "nameserver": "8.8.8.8",
     "server_port":$server_port,
     "local_port":1080,
@@ -150,5 +150,5 @@ echo "domain is $domain" | tee -a ss_install.log
 echo "plugin is 'v2ray-plugin_windows_amd64'"
 echo "plugin-opts is 'tls;host=$domain;path=/ue1cdh3vrpuj;'" | tee -a ss_install.log
 
-sudo systemctl disenable apache2
+sudo systemctl disable apache2
 sudo systemctl stop apache2
