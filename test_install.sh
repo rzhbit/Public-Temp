@@ -3,8 +3,8 @@
 #set -u
 set -e
 
-server_port=8421
-password="iVm8GUKnsE#RA,e=^X4g]TQfz5h#!e"
+server_port=$(shuf -i20001-65535 -n1)
+password="jGHui1PTuCLA4hNRh168-t"
 encrypt_method="xchacha20-ietf-poly1305"
 domain=
 only_config=false
@@ -78,17 +78,17 @@ if [ "$only_config" != true ]; then
         #enable ufw
         sudo ufw allow 80
         sudo ufw allow 443
-        #sudo ufw allow $server_port
+        sudo ufw allow $server_port
         sudo ufw status
         
         #install apache2
         apt update
-        apt-get install nginx -y
+        apt-get install apache2 -y
         
         #get CA
         curl  https://get.acme.sh | sh
         ./.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
-        ./.acme.sh/acme.sh --issue  -d $domain --nginx --force
+        ./.acme.sh/acme.sh --issue  -d $domain --apache --force
 
         #install shadowsocks-libev
         apt install shadowsocks-libev -y
