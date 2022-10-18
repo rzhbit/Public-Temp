@@ -150,3 +150,5 @@ echo "domain is $domain" | tee -a ss_install.log
 echo "plugin is 'v2ray-plugin_windows_amd64'"
 echo "plugin-opts is 'tls;host=$domain;path=/ue1cdh3vrpuj;'" | tee -a ss_install.log
 
+sudo systemctl disenable apache2
+sudo systemctl stop apache2
