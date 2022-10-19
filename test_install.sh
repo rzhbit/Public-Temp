@@ -105,6 +105,7 @@ fi
 echo "----#edit config----"
 sudo ufw allow $server_port
 #config.json
+crtpath=/root/.local/share/caddy/certificates/*/$domain
 cat <<END >/etc/shadowsocks-libev/config.json
 {
     "server": "0.0.0.0", 
@@ -117,7 +118,7 @@ cat <<END >/etc/shadowsocks-libev/config.json
     "no_delay": true,
     "mode": "tcp_only",
     "plugin": "/usr/bin/v2ray-plugin",
-    "plugin_opts": "server;tls;host=$domain;path=/ue1cdh3vrpuj;loglevel=none;cert=/root/.acme.sh/$domain/fullchain.cer;key=/root/.acme.sh/$domain/$domain.key"
+    "plugin_opts": "server;tls;host=$domain;path=/ue1cdh3vrpuj;loglevel=none;cert=$crtpath/$domain.crt;key=$crtpath/$domain.key"
 }
 END
 
