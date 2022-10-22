@@ -4,7 +4,7 @@
 set -e
 
 server_port=$(shuf -i20001-65535 -n1)
-password="iVm8GUKnsE#RA,e=^X4g]TQfz5h#!e"
+password="]5.t!YQj-vCAv}5#gZ!C"
 encrypt_method="xchacha20-ietf-poly1305"
 domain=
 only_config=false
