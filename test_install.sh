@@ -105,7 +105,10 @@ fi
 echo "----#edit config----"
 sudo ufw allow $server_port
 #config.json
-crtpath=/root/.local/share/caddy/certificates/*/$domain
+
+echo /root/.local/share/caddy/certificates/*/$domain > adv_tmp_32cd6e1c98ee.txt
+crtpath=$(cat adv_tmp_32cd6e1c98ee.txt)
+
 cat <<END >/etc/shadowsocks-libev/config.json
 {
     "server": "0.0.0.0", 
