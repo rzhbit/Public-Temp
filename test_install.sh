@@ -75,19 +75,35 @@ fi
 if [ "$only_config" != true ]; then
         echo "----#install ss-server----"
 
+        cat <<END > deleteufw.py
+        import sys
+        import os
+        for line in sys.stdin:
+            if line.find("ALLOW") < 0 or  line.find("v6") > 0:
+                continue
+            port = line.split(" ")[0]
+            if port in ["22","80","443"]:
+                continue
+            os.system("sudo ufw delete allow %s"%port)
+        END
+        sudo ufw status|python3 deleteufw.py
+        rm -f deleteufw.py
+
         #enable ufw
+        sudo ufw allow 22
         sudo ufw allow 80
         sudo ufw allow 443
+        sudo ufw allow $server_port
         sudo ufw status
         
         #install apache2
-        apt update
-        apt-get install apache2 -y
+        #apt update
+        #apt-get install apache2 -y
         
         #get CA
-        curl  https://get.acme.sh | sh
-        ./.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
-        ./.acme.sh/acme.sh --issue  -d $domain --apache --force
+        #curl  https://get.acme.sh | sh
+        #./.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
+        #./.acme.sh/acme.sh --issue  -d $domain --apache --force
 
         #install shadowsocks-libev
         apt install shadowsocks-libev -y
