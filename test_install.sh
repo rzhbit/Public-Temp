@@ -8,7 +8,7 @@ password="]5.t!YQj-vCAv}5#gZ!C"
 encrypt_method="xchacha20-ietf-poly1305"
 domain=
 only_config=false
-
+install_apach=false
 
 usage()
 {
@@ -71,8 +71,7 @@ if [ -z $domain ]; then
         exit 1
 fi
 
-
-
+#------ufw config-------
 cat <<END > deleteufw.py
 import sys
 import os
@@ -84,30 +83,27 @@ for line in sys.stdin:
         continue
     os.system("sudo ufw delete allow %s"%port)
 END
-
 sudo ufw status|python3 deleteufw.py
 rm -f deleteufw.py
-
 #enable ufw
 sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw allow 443
 sudo ufw allow $server_port
 sudo ufw status
-
-
-
+#------install apache------
+if [ "$install_apach" != false ]; then  
+        #install apache2
+        apt update
+        apt-get install apache2 -y
+        #get CA
+        curl  https://get.acme.sh | sh
+        ./.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
+        ./.acme.sh/acme.sh --issue  -d $domain --apache --force
+fi
+#------install ss-v2ray------
 if [ "$only_config" != true ]; then
         echo "----#install ss-server----"
-        
-        #install apache2
-        #apt update
-        #apt-get install apache2 -y
-        
-        #get CA
-        #curl  https://get.acme.sh | sh
-        #./.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
-        #./.acme.sh/acme.sh --issue  -d $domain --apache --force
 
         #install shadowsocks-libev
         apt install shadowsocks-libev -y
@@ -120,14 +116,15 @@ if [ "$only_config" != true ]; then
         mv v2ray-plugin_linux_amd64 /usr/bin/v2ray-plugin
 
 fi
-
 #----------------------
+
 echo "----#edit config----"
 sudo ufw allow $server_port
 #config.json
 
 echo /root/.local/share/caddy/certificates/*/$domain > adv_tmp_32cd6e1c98ee.txt
 crtpath=$(cat adv_tmp_32cd6e1c98ee.txt)
+rm -f adv_tmp_32cd6e1c98ee.txt
 
 cat <<END >/etc/shadowsocks-libev/config.json
 {
