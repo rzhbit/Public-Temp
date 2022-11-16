@@ -80,7 +80,7 @@ domain_check() {
         fi
         #getip
         ip=$(curl -s https://ipinfo.io/ip)
-        [[ -z $ip ]] && ip=$(curl -s https://api.ip.sb/ip)
+        # [[ -z $ip ]] && ip=$(curl -s https://api.ip.sb/ip)
         [[ -z $ip ]] && ip=$(curl -s https://api.ipify.org)
         [[ -z $ip ]] && ip=$(curl -s https://ip.seeip.org)
         [[ -z $ip ]] && ip=$(curl -s https://ifconfig.co/ip)
@@ -89,11 +89,12 @@ domain_check() {
         [[ -z $ip ]] && ip=$(curl -s myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
         [[ -z $ip ]] && echo -e "\n$red 无法获得ip地址！$none\n" && exit
         #cheakdomain
+        test_domain=$(ping $domain -c 1 -W 2 | head -1)
         # test_domain=$(dig $domain +short)
-        test_domain=$(ping $domain -c 1 -W 4 | grep -oE -m1 "([0-9]{1,3}\.){3}[0-9]{1,3}")
+        # test_domain=$(ping $domain -c 1 -W 4 | grep -oE -m1 "([0-9]{1,3}\.){3}[0-9]{1,3}")
         # test_domain=$(wget -qO- --header='accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=$domain&type=A" | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}" | head -1)
         # test_domain=$(curl -sH 'accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=$domain&type=A" | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}" | head -1)
-        if [[ $test_domain != $ip ]]; then
+        if [[ ! $(echo $test_domain | grep $ip) ]]; then
                 echo
                 echo -e "$red 检测域名解析错误....$none"
                 echo
