@@ -173,7 +173,7 @@ cat <<END >/etc/shadowsocks-libev/config.json
     "method":"$encrypt_method",
     "timeout": 600,
     "no_delay": true,
-    "mode": "tcp_only",
+    "mode": "tcp_and_udp",
     "plugin": "/usr/bin/v2ray-plugin",
     "plugin_opts": "server;tls;host=$domain;path=/ue1cdh3vrpuj;loglevel=none;cert=${ca_crt};key=${ca_key}"
 }
