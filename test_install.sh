@@ -152,7 +152,8 @@ if [ "$install_ss" != false ]; then
         apt update
         apt install shadowsocks-libev -y
         #install v2ray-plugin
-        snap install go --classic
+        #snap install go --classic
+        apt-get install golang -y
         wget https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.1/v2ray-plugin-linux-amd64-v1.3.1.tar.gz
         tar -zxvf v2ray-plugin-linux-amd64-*.tar.gz
         mv v2ray-plugin_linux_amd64 /usr/bin/v2ray-plugin
