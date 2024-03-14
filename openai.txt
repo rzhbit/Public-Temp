@@ -1,0 +1,11 @@
+payload:
+  # OPENAI-Proxy
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,ai.com
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN,cdn.auth0.com
+  - DOMAIN,challenges.cloudflare.com
+  - DOMAIN,openaiapi-site.azureedge.net
+  - DOMAIN-SUFFIX,sentry.io
+  - DOMAIN-SUFFIX,intercom.io
+  - DOMAIN-SUFFIX,identrust.com
