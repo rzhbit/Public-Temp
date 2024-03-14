@@ -1,0 +1,34 @@
+payload:
+  # Microsoft Office and OneDrive
+  # These have been include in the Microsoft
+  - DOMAIN-SUFFIX,windows.com,DIRECT
+  - DOMAIN-SUFFIX,windows.net,DIRECT
+  - DOMAIN-SUFFIX,onedrive.com,DIRECT
+  - DOMAIN-SUFFIX,assets-yammer.com,DIRECT
+  - DOMAIN-SUFFIX,footprintdns.com,DIRECT
+  - DOMAIN-SUFFIX,microsoft.com,DIRECT
+  - DOMAIN-SUFFIX,live.com,DIRECT
+  - DOMAIN-SUFFIX,live.com.au,DIRECT
+  - DOMAIN-SUFFIX,live.eu,DIRECT
+  - DOMAIN-SUFFIX,live.net,DIRECT
+  - DOMAIN-SUFFIX,storage.live.com,DIRECT
+  - DOMAIN-SUFFIX,livefilestore.com,DIRECT
+  - DOMAIN-SUFFIX,microsoftonline.com,DIRECT
+  - DOMAIN-SUFFIX,microsoftonline-p.com,DIRECT
+  - DOMAIN-SUFFIX,o365filtering.com,DIRECT
+  - DOMAIN-SUFFIX,msocsp.com,DIRECT
+  - DOMAIN-SUFFIX,msocdn.com,DIRECT
+  - DOMAIN-SUFFIX,office.com,DIRECT
+  - DOMAIN-SUFFIX,office.de,DIRECT
+  - DOMAIN-SUFFIX,office.microsoft,DIRECT
+  - DOMAIN-SUFFIX,office.net,DIRECT
+  - DOMAIN-SUFFIX,office365.com,DIRECT
+  - DOMAIN-SUFFIX,office365.us,DIRECT
+  - DOMAIN-SUFFIX,office365love.com,DIRECT
+  - DOMAIN-SUFFIX,office365tw.com,DIRECT
+  - DOMAIN-SUFFIX,officedev.cn,DIRECT
+  - DOMAIN-SUFFIX,onenote.com,DIRECT
+  - DOMAIN-SUFFIX,renovacionoffice.com,DIRECT
+  - DOMAIN-SUFFIX,onmicrosoft.com,DIRECT
+  - DOMAIN-SUFFIX,svc.ms,DIRECT
+  - DOMAIN-SUFFIX,yammer.com,DIRECT
