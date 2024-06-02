@@ -36,3 +36,9 @@ payload:
   - DOMAIN-SUFFIX,fbsbx.com
   - DOMAIN-SUFFIX,fbwat.ch
   - DOMAIN-SUFFIX,parse.com
+  # 一元机场
+  - DOMAIN-SUFFIX,xn--4gq62f52gdss.com
+  - DOMAIN-SUFFIX,xn--4gq62f52gdss.club
+  - DOMAIN-SUFFIX,xn--4gq62f52gdss.art
+  - DOMAIN-SUFFIX,services.googleapis.cn
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
