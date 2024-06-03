@@ -37,6 +37,7 @@ payload:
   - DOMAIN-SUFFIX,fbwat.ch
   - DOMAIN-SUFFIX,parse.com
   # 一元机场
+  - DOMAIN-KEYWORD,一元机场,PROXY 
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.com
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.club
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.art
