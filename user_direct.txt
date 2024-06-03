@@ -1,4 +1,5 @@
 payload:
+  # scholar
   - DOMAIN-SUFFIX,ncbi.nlm.nih.gov
   - DOMAIN-SUFFIX,ebi.ac.uk
   - DOMAIN-SUFFIX,cnki
@@ -77,3 +78,37 @@ payload:
   - DOMAIN-SUFFIX,wiley.com
   - DOMAIN-SUFFIX,worldbank.org
   - DOMAIN-SUFFIX,worldscientific.com
+
+  # Microsoft Office and OneDrive
+  # These have been include in the Microsoft
+  - DOMAIN-SUFFIX,windows.com
+  - DOMAIN-SUFFIX,windows.net
+  - DOMAIN-SUFFIX,onedrive.com
+  - DOMAIN-SUFFIX,assets-yammer.com
+  - DOMAIN-SUFFIX,footprintdns.com
+  - DOMAIN-SUFFIX,microsoft.com
+  - DOMAIN-SUFFIX,live.com
+  - DOMAIN-SUFFIX,live.com.au
+  - DOMAIN-SUFFIX,live.eu
+  - DOMAIN-SUFFIX,live.net
+  - DOMAIN-SUFFIX,storage.live.com
+  - DOMAIN-SUFFIX,livefilestore.com
+  - DOMAIN-SUFFIX,microsoftonline.com
+  - DOMAIN-SUFFIX,microsoftonline-p.com
+  - DOMAIN-SUFFIX,o365filtering.com
+  - DOMAIN-SUFFIX,msocsp.com
+  - DOMAIN-SUFFIX,msocdn.com
+  - DOMAIN-SUFFIX,office.com
+  - DOMAIN-SUFFIX,office.de
+  - DOMAIN-SUFFIX,office.microsoft
+  - DOMAIN-SUFFIX,office.net
+  - DOMAIN-SUFFIX,office365.com
+  - DOMAIN-SUFFIX,office365.us
+  - DOMAIN-SUFFIX,office365love.com
+  - DOMAIN-SUFFIX,office365tw.com
+  - DOMAIN-SUFFIX,officedev.cn
+  - DOMAIN-SUFFIX,onenote.com
+  - DOMAIN-SUFFIX,renovacionoffice.com
+  - DOMAIN-SUFFIX,onmicrosoft.com
+  - DOMAIN-SUFFIX,svc.ms
+  - DOMAIN-SUFFIX,yammer.com
