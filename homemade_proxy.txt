@@ -38,6 +38,8 @@ payload:
   - DOMAIN-SUFFIX,parse.com
   # UNiDAYS
   - DOMAIN-SUFFIX,myunidays.com
+  # mack-a 代理脚本
+  - DOMAIN-SUFFIX,v2ray-agent.com
   # 一元机场
   - DOMAIN-KEYWORD,一元机场,PROXY 
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.com
