@@ -1,5 +1,5 @@
 payload:
-  # scholar
+  # Scholar Website
   - DOMAIN-SUFFIX,ncbi.nlm.nih.gov
   - DOMAIN-SUFFIX,ebi.ac.uk
   - DOMAIN-SUFFIX,cnki
@@ -78,7 +78,6 @@ payload:
   - DOMAIN-SUFFIX,wiley.com
   - DOMAIN-SUFFIX,worldbank.org
   - DOMAIN-SUFFIX,worldscientific.com
-
   # Microsoft Office and OneDrive
   # These have been include in the Microsoft
   - DOMAIN-SUFFIX,windows.com

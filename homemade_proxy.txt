@@ -1,5 +1,9 @@
 payload:
-# Twitter
+  # Bioinformatics
+  - DOMAIN-SUFFIX,nanoporetech.com,PROXY
+  - DOMAIN-SUFFIX,alphafoldserver.com,PROXY
+  - DOMAIN-SUFFIX,thesaurus.com,PROXY
+  # Twitter
   - DOMAIN-SUFFIX,Twitter.com
   - DOMAIN-SUFFIX,ads-twitter.com
   - DOMAIN-SUFFIX,t.co
