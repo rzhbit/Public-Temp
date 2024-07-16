@@ -112,7 +112,6 @@ payload:
   - DOMAIN-SUFFIX,onmicrosoft.com
   - DOMAIN-SUFFIX,svc.ms
   - DOMAIN-SUFFIX,yammer.com
-
   # Kdocs
   - DOMAIN-SUFFIX,wps.cn
   - DOMAIN-SUFFIX,kdocs.cn
