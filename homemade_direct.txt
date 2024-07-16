@@ -116,5 +116,5 @@ payload:
   # Kdocs
   - DOMAIN-SUFFIX,wps.cn
   - DOMAIN-SUFFIX,kdocs.cn
-  - DOMAIN-SUFFIX,ksord.cn
-  - DOMAIN-SUFFIX,ksyun.cn
+  - DOMAIN-SUFFIX,ksord.com
+  - DOMAIN-SUFFIX,ksyun.com
