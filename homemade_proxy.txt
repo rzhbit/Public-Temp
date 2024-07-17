@@ -1,8 +1,9 @@
 payload:
   # Bioinformatics
-  - DOMAIN-SUFFIX,nanoporetech.com,PROXY
-  - DOMAIN-SUFFIX,alphafoldserver.com,PROXY
-  - DOMAIN-SUFFIX,thesaurus.com,PROXY
+  - DOMAIN-SUFFIX,chatgpt4google.com
+  - DOMAIN-SUFFIX,nanoporetech.com
+  - DOMAIN-SUFFIX,alphafoldserver.com
+  - DOMAIN-SUFFIX,thesaurus.com
   # Twitter
   - DOMAIN-SUFFIX,Twitter.com
   - DOMAIN-SUFFIX,ads-twitter.com
@@ -45,7 +46,7 @@ payload:
   # mack-a 代理脚本
   - DOMAIN-SUFFIX,v2ray-agent.com
   # 一元机场
-  - DOMAIN-KEYWORD,一元机场,PROXY 
+  - DOMAIN-KEYWORD,一元机场
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.com
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.club
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.art
