@@ -116,3 +116,6 @@ payload:
   - DOMAIN-SUFFIX,kdocs.cn
   - DOMAIN-SUFFIX,ksord.com
   - DOMAIN-SUFFIX,ksyun.com
+  # adobe
+  - DOMAIN-SUFFIX,adobe.com
+  - DOMAIN-SUFFIX,adobe.io
