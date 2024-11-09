@@ -1,6 +1,5 @@
 payload:
   # Scholar Website
-  - DOMAIN-SUFFIX,ncbi.nlm.nih.gov
   - DOMAIN-SUFFIX,ebi.ac.uk
   - DOMAIN-SUFFIX,cnki
   - DOMAIN-SUFFIX,science.org
