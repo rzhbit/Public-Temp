@@ -52,3 +52,8 @@ payload:
   - DOMAIN-SUFFIX,xn--4gq62f52gdss.art
   - DOMAIN-SUFFIX,services.googleapis.cn
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+
+  # Other
+  - DOMAIN-SUFFIX,nanoporetech.com
+  - DOMAIN-SUFFIX,alphafoldserver.com
+  - DOMAIN-SUFFIX,thesaurus.com
