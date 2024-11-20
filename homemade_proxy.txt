@@ -43,6 +43,8 @@ payload:
   - DOMAIN-SUFFIX,parse.com
   # UNiDAYS
   - DOMAIN-SUFFIX,myunidays.com
+  # mihomo wiki文档
+  - DOMAIN-SUFFIX,wiki.metacubex.one
   # mack-a 代理脚本
   - DOMAIN-SUFFIX,v2ray-agent.com
   # 一元机场
@@ -57,3 +59,4 @@ payload:
   - DOMAIN-SUFFIX,nanoporetech.com
   - DOMAIN-SUFFIX,alphafoldserver.com
   - DOMAIN-SUFFIX,thesaurus.com
+
