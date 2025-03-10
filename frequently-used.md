@@ -6,6 +6,14 @@
 split -n l/5 $file -d -a 1 features_ && ls | grep -E "^features_" | xargs -n1 -I {} mv {} {}.txt
 ```
 
+md5deep校验
+```shell
+# 保存校验值到md5.txt
+md5deep -j 4 -lr /path > md5.txt
+# 校验文件是否被修改
+md5deep -j 4 -x md5.txt -r/path
+```
+
 awk分割字符串，输出字符串的第三个字符
 ```shell
 less $file | awk '{print substr($1, 3, 1)}'
