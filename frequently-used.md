@@ -14,9 +14,9 @@ md5deep -j 4 -lr /path > md5.txt
 md5deep -j 4 -x md5.txt -r/path
 ```
 
-awk分割字符串，输出字符串的第三个字符
-```shell
-less $file | awk '{print substr($1, 3, 1)}'
+查看服务日志
+```
+journalctl -u mihomo -o cat
 ```
 
 管理gcc版本安装切换gcc版本
@@ -47,7 +47,9 @@ git config --global --get http.proxy
 git config --global --get https.proxy
 ```
 
-查看服务日志
+
+awk分割字符串，输出字符串的第三个字符
+```shell
+less $file | awk '{print substr($1, 3, 1)}'
 ```
-journalctl -u mihomo -o cat
-```
+
