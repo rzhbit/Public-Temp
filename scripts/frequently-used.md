@@ -28,7 +28,7 @@ gcc -v
 
 linux设置代理
 ```shell
-export proxy="http://127.0.0.1:7897"
+export proxy="http://127.0.0.1:7890"
 export http_proxy=$proxy
 export https_proxy=$proxy
 export ftp_proxy=$proxy
