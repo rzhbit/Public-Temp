@@ -16,14 +16,8 @@ md5deep -j 4 -x md5.txt -r ./ > md5_error.log
 
 查看服务日志
 ```
-journalctl -u mihomo -o cat
-```
-
-管理gcc版本安装切换gcc版本
-```shell
-#ls /opt/rh
-scl enable devtoolset-8 bash
-gcc -v
+journalctl -u mihomo -o cat -e
+journalctl -u mihomo -o cat -f
 ```
 
 linux设置代理
@@ -47,6 +41,12 @@ git config --global --get http.proxy
 git config --global --get https.proxy
 ```
 
+管理gcc版本安装切换gcc版本
+```shell
+#ls /opt/rh
+scl enable devtoolset-8 bash
+gcc -v
+```
 
 awk分割字符串，输出字符串的第三个字符
 ```shell
