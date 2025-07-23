@@ -53,3 +53,7 @@ awk分割字符串，输出字符串的第三个字符
 less $file | awk '{print substr($1, 3, 1)}'
 ```
 
+pip指定源安装
+```
+pip install jupyterlab -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+```
