@@ -2,21 +2,23 @@
 
 # ==============================================================================
 # Mihomo (Clash core) 代理管理脚本
-# 作者: (原作者未提供，根据脚本内容整理)
-# 日期: 2023-10-27 (整理日期)
+# 作者: renzehui
+# 日期: 2025-8-27 (整理日期)
 # 功能: 提供了开关代理、切换模式、切换节点、显示状态和测试延迟等功能。
 # 依赖: jq (用于解析JSON数据)
 # ==============================================================================
 
 # ============================ 配置项 ============================
 # Mihomo 的配置文件和可执行文件路径
-MIHOMO_PATH="/media/AnalysisDisk2/Renzehui/software/mihomo"
+MIHOMO_PATH=""
 # Mihomo 代理服务的监听地址
 PROXY_HOST="127.0.0.1"
 # Mihomo 代理端口 (HTTP/SOCKS5)
 PROXY_PORT="7890"
 # Mihomo RESTful API 端口
 API_PORT="9090"
+# 规则模式代理组名称
+RULE_PROXY="Proxy"
 # ================================================================
 
 # ----------------------------- 辅助函数 -----------------------------
@@ -82,6 +84,8 @@ start_service() {
     if ! check_service; then
         echo "正在启动 Mihomo 代理服务..."
         "$MIHOMO_PATH/start-mihomo.sh" &
+        # systemctl reload mihomo
+        # systemctl restart mihomo
         sleep 2 # 等待服务启动
         if check_service; then
             echo "Mihomo 代理服务已启动。"
@@ -97,6 +101,7 @@ stop_service() {
     if check_service; then
         echo "正在停止 Mihomo 代理服务..."
         pkill -f "mihomo -d"
+        # systemctl stop mihomo
         sleep 1 # 稍微等待进程终止
         if ! check_service; then
             echo "Mihomo 代理服务已停止。"
@@ -111,6 +116,8 @@ stop_service() {
 set_proxy() {
     export http_proxy="http://$PROXY_HOST:$PROXY_PORT"
     export https_proxy="http://$PROXY_HOST:$PROXY_PORT"
+    export ftp_proxy="http://$PROXY_HOST:$PROXY_PORT"
+    export no_proxy="localhost, 127.0.0.1, ::1"
     # 可以根据需要添加其他代理变量，如 ALL_PROXY
     echo "代理环境变量已设置。"
 }
@@ -119,22 +126,23 @@ set_proxy() {
 unset_proxy() {
     unset http_proxy
     unset https_proxy
+    unset ftp_proxy
     echo "代理环境变量已清除。"
 }
 
-# ----------------------------- Mihomo API 交互函数 -----------------------------
-
+# 设置代理模式对应代理组名
 get_group() {
     local mode=$(curl -s "http://$PROXY_HOST:$API_PORT/configs" | jq -r '.mode')
     if [[ "$mode" == "global" ]]; then
         echo "GLOBAL"
     elif [[ "$mode" == "rule" ]]; then
-        echo "Proxy"
+        echo $RULE_PROXY
     else
         echo "UNKNOWN"
     fi
 }
 
+# ----------------------------- Mihomo API 交互函数 -----------------------------
 # 切换代理模式 (global, direct, rule)
 switch_mode() {
     local mode="$1"
@@ -148,7 +156,7 @@ switch_mode() {
     fi
 }
 
-# 切换代理节点 (通常是XFLTD组，Clash配置中默认的"Proxy"组)
+# 切换代理节点 (默认的"Proxy"组)
 switch_node() {
     local node_name="$1"
     local proxy_group_name=$(get_group)
@@ -167,6 +175,7 @@ switch_node() {
 get_current_node() {
     local proxy_group_name=$(get_group)
     local response=$(curl -s -H "Content-Type: application/json" -X GET "http://$PROXY_HOST:$API_PORT/proxies/$proxy_group_name")
+    
     if command -v jq &> /dev/null; then
         echo "$response" | jq -r '.now'
     else
@@ -298,7 +307,23 @@ main() {
             switch_node "$node_name"
             ;;
         "now")
-            echo "当前节点: $(get_current_node)"
+            local current_node=$(get_current_node)
+            echo "当前节点: $current_node"
+
+            local node_info=$(curl -s -H "Content-Type: application/json" -X GET "http://$PROXY_HOST:$API_PORT/proxies/$current_node")
+            local node_type=$(echo "$node_info"| jq -r '.type' 2>/dev/null)
+            if [[ "$node_type" == "Selector" || "$node_type" == "URLTest" || "$node_type" == "Fallback" ]]; then
+                local actual_node=$(echo "$node_info" | jq -r '.now' 2>/dev/null)
+                # echo "debug: 代理组 '$node' 当前使用节点: $actual_node" >&2
+                if [ -n "$actual_node" ] && [ "$actual_node" != "null" ]; then
+                    node="$actual_node"
+                    encoded_node=$(echo "$actual_node" | sed 's/ /%20/g' | sed 's/:/%3A/g' | sed 's/\//%2F/g')
+                    echo "      -- $encoded_node"
+                else
+                    echo "错误: 无法获取代理组 '$node' 当前使用的节点。" >&2
+                    return 1
+                fi
+            fi
             ;;
         "delay")
             local current_node_for_delay=$(get_current_node)
