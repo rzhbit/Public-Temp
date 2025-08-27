@@ -10,7 +10,7 @@
 
 # ============================ 配置项 ============================
 # Mihomo 的配置文件和可执行文件路径
-MIHOMO_PATH=""
+MIHOMO_PATH="/media/AnalysisDisk2/Renzehui/software/mihomo"
 # Mihomo 代理服务的监听地址
 PROXY_HOST="127.0.0.1"
 # Mihomo 代理端口 (HTTP/SOCKS5)
@@ -229,14 +229,14 @@ get_delay() {
             local delay=$(echo "$delay_info" | grep -o '"delay":[0-9]*' | cut -d':' -f2)
             if [ -n "$delay" ] && [ "$delay" != "null" ]; then
                 # echo "debug: 成功获取延迟: ${delay}ms" >&2
-                echo "{\"delay\": $delay}"
+                echo "{\"now\":\"$encoded_node\",\"delay\": $delay}"
                 return 0 # 成功获取一个延迟就返回
             fi
         fi
     done
 
     # echo "debug: 所有URL测试失败" >&2
-    echo '{"delay": -1}' # 返回-1表示超时或失败
+    echo "{\"now\":\"$encoded_node\",\"delay\": -1}" # 返回-1表示超时或失败
     return 1
 }
 
@@ -331,12 +331,13 @@ main() {
             
             local delay_json=$(get_delay "$current_node_for_delay")
             
+            local delay_node=$(echo "$delay_json" | jq -r '.now')
             local delay_value=$(echo "$delay_json" | jq -r '.delay')
-            
+
             if [[ "$delay_value" == "-1" || "$delay_value" == "null" ]]; then
-                echo "延迟测试失败或超时。"
+                echo "$delay_node: 延迟测试失败或超时。"
             else
-                echo "延迟: ${delay_value}ms"
+                echo "$delay_node: 延迟 $delay_value ms"
             fi
             ;;
         "list")
